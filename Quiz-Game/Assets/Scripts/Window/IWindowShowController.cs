@@ -2,9 +2,11 @@
 {
     public interface IWindowShowController
     {
-        void SetNext<T>() where T : WindowView;
+        void Show<TWindow, TProcessor>() where TWindow : WindowView 
+                                         where TProcessor : IWindowShowProcessor;
 
-        void SetNext<TWindow, TModel>(TModel model) where TModel : IWindowModel 
-                                                    where TWindow : WindowView;
+        void Show<TWindow, TProcessor, TModel>(TModel model) where TModel : IWindowModel
+                                                             where TProcessor : IWindowShowProcessor
+                                                             where TWindow : WindowView;
     }
 }

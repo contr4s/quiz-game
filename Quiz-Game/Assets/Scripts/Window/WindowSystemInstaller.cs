@@ -12,6 +12,7 @@ namespace Window
         {
             Container.BindInstance(_windowsViews);
             Container.BindAllImplementationsOfType<IWindowAdapter>();
+            Container.BindAllImplementationsOfType<IWindowShowProcessor>();
             Container.BindInterfacesTo<WindowInitializer>().AsSingle();
             Container.BindInterfacesTo<WindowShowController>().AsSingle();
         }

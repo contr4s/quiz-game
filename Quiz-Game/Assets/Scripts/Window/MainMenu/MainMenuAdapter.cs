@@ -1,5 +1,6 @@
 ﻿using Window.Common;
 using Window.Quiz;
+using Window.ShowProcessors;
 
 namespace Window.MainMenu
 {
@@ -14,7 +15,7 @@ namespace Window.MainMenu
 
         public void StartQuiz()
         {
-            _windowShowController.SetNext<QuizWindow, QuizModel>(new QuizModel());
+            _windowShowController.Show<QuizWindow, ReversedShowProcessor, QuizModel>(new QuizModel());
         }
 
         public EmptyWindowModel Model { get; set; }

@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f62ce453804b768a4676f901d7e148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windows:
+  _windowsViews:
     windowViews:
     - {fileID: 1640643429}
     - {fileID: 1323210932}
@@ -478,6 +478,8 @@ GameObject:
   - component: {fileID: 1323210931}
   - component: {fileID: 1323210930}
   - component: {fileID: 1323210932}
+  - component: {fileID: 1323210934}
+  - component: {fileID: 1323210933}
   m_Layer: 5
   m_Name: Quiz Window
   m_TagString: Untagged
@@ -558,7 +560,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 259d343f0e6d4e018aecb39dc4971379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animation: {fileID: 1323210934}
   canvas: {fileID: 1323210931}
+--- !u!225 &1323210933
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323210928}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1323210934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323210928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e335b91b81064f9aa853a64b9b519469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 1323210933}
+  _fadeInTime: 1
+  _fadeOutTime: 1
 --- !u!224 &1640643425 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 840213529679940497, guid: 748d6f2b36b74614a943567563372029, type: 3}
