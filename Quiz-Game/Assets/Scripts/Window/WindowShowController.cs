@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Extensions;
 using UnityEngine;
+using Util.Extensions;
 using Window.ShowProcessors;
 using Zenject;
 
@@ -46,7 +46,6 @@ namespace Window
 
         public void Show<TWindow, TProcessor, TModel>(TModel model) where TWindow : WindowView 
                                                                     where TProcessor : IWindowShowProcessor 
-                                                                    where TModel : IWindowModel
         {
             if (!_windowViews.TryGetValue(typeof(TWindow), out WindowView windowView))
             {
@@ -57,11 +56,10 @@ namespace Window
             if (windowView is not IWindowView<IWindowAdapter<TModel>> genericView)
             {
                 Debug.LogError($"Window of type {typeof(TWindow)} is not a view for {typeof(TModel)} model type");
-
                 return;
             }
 
-            genericView.Adapter.Model = model;
+            genericView.Adapter.SetUp(model);
             Show<TProcessor>(windowView);
         }
         

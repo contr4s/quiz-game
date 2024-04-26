@@ -8,11 +8,13 @@ namespace Window.Common
 
         public override void InstantlyShow()
         {
+            base.InstantlyShow();
             canvas.enabled = true;
         }
 
         public override void InstantlyHide()
         {
+            base.InstantlyHide();
             canvas.enabled = false;
         }
     }

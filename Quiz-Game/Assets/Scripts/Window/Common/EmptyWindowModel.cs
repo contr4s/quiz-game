@@ -1,4 +1,4 @@
 ﻿namespace Window.Common
 {
-    public struct EmptyWindowModel : IWindowModel { }
+    public struct EmptyWindowModel { }
 }

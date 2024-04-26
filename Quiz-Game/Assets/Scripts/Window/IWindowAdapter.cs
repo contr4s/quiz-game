@@ -1,16 +1,11 @@
-﻿using System;
-
-namespace Window
+﻿namespace Window
 {
     public interface IWindowAdapter
     {
-        Type ServicedModelType { get; }
     }
 
-    public interface IWindowAdapter<T> : IWindowAdapter where T : IWindowModel
+    public interface IWindowAdapter<in T> : IWindowAdapter
     {
-        Type IWindowAdapter.ServicedModelType => typeof(T);
-        
-        public T Model { get; set; }
+        void SetUp(T model);
     }
  }

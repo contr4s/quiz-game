@@ -9,6 +9,7 @@ namespace Window
     public abstract class WindowView : UIBehaviour
     {
         public abstract Type ServicedAdapterType { get; }
+        public abstract bool IsShown { get; }
 
         public abstract void SetAdapter(IWindowAdapter adapter);
         
@@ -24,10 +25,12 @@ namespace Window
         [SerializeField] private WindowAnimation _animation;
 
         private bool _hasAnimation;
+        private bool _isShown;
         
         public override Type ServicedAdapterType => typeof(T);
         
         public T Adapter { get; private set; }
+        public sealed override bool IsShown => _isShown;
 
         public sealed override void SetAdapter(IWindowAdapter adapter)
         { 
@@ -40,10 +43,19 @@ namespace Window
                 Debug.LogError($"Can't set {adapter} adapter to {this} view");
             }
         }
+
+        public override void InstantlyShow()
+        {
+            _isShown = true;
+        }
         
+        public override void InstantlyHide()
+        {
+            _isShown = false;
+        }
+
         public sealed override async UniTask Show(CancellationToken ct)
         {
-            Debug.Log($"Show {this}");
             InstantlyShow();
             if (_hasAnimation)
             {
@@ -58,7 +70,6 @@ namespace Window
 
         public sealed override async UniTask Hide(CancellationToken ct)
         {
-            Debug.Log($"Hide {this}");
             if (_hasAnimation)
             {
                 await _animation.HideAnimation(ct);

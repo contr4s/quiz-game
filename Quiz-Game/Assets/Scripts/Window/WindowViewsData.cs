@@ -8,9 +8,9 @@ namespace Window
     public class WindowViewsData
     {
         [SerializeField] private WindowView[] windowViews;
-        [SerializeField] private WindowView startWindow;
+        [SerializeField] private int startWindowIndex;
         
         public IReadOnlyList<WindowView> WindowViews => windowViews;
-        public WindowView StartWindow => startWindow == null ? WindowViews[0] : startWindow;
+        public WindowView StartWindow => WindowViews[startWindowIndex];
     }
 }

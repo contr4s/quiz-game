@@ -1,0 +1,54 @@
+[
+{
+"question": "Какой элемент химической таблицы имеет символ H?",
+"answers": [
+{"text": "Водород", "correct": true},
+{"text": "Гелий", "correct": false},
+{"text": "Гидроген", "correct": false},
+{"text": "Гидроксид", "correct": false}
+],
+"background": "backgrounds/chemistry.jpg"
+},
+{
+"question": "Какие из этих стран являются членами Европейского союза?",
+"answers": [
+{"text": "Франция", "correct": true},
+{"text": "Швейцария", "correct": false},
+{"text": "Испания", "correct": true},
+{"text": "Норвегия", "correct": false},
+{"text": "Италия", "correct": true}
+],
+"background": "backgrounds/europe.jpg"
+},
+{
+"question": "Какой автор написал роман '1984'?",
+"answers": [
+{"text": "Джордж Оруэлл", "correct": true},
+{"text": "Александр Дюма", "correct": false},
+{"text": "Франсуа Мари Аруэ (Вольтер)", "correct": false},
+{"text": "Джеймс Джойс", "correct": false}
+],
+"background": "backgrounds/books.jpg"
+},
+{
+"question": "Какие из этих птиц являются символами разных стран?",
+"answers": [
+{"text": "Орел (США)", "correct": true},
+{"text": "Павлин (Индия)", "correct": true},
+{"text": "Кукушка (Великобритания)", "correct": false},
+{"text": "Феникс (Египет)", "correct": true},
+{"text": "Ворона (Канада)", "correct": false}
+],
+"background": "backgrounds/birds.jpg"
+},
+{
+"question": "Какой из этих городов является столицей Италии?",
+"answers": [
+{"text": "Рим", "correct": true},
+{"text": "Милан", "correct": false},
+{"text": "Венеция", "correct": false},
+{"text": "Флоренция", "correct": false}
+],
+"background": "backgrounds/italy.jpg"
+}
+]

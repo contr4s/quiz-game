@@ -1,5 +1,5 @@
-﻿using Window.Common;
-using Window.Quiz;
+﻿using Quiz;
+using Window.Common;
 using Window.ShowProcessors;
 
 namespace Window.MainMenu
@@ -7,17 +7,20 @@ namespace Window.MainMenu
     public class MainMenuAdapter : IWindowAdapter<EmptyWindowModel>
     {
         private readonly IWindowShowController _windowShowController;
+        private readonly QuizJsonParser _quizJsonParser;
         
-        public MainMenuAdapter(IWindowShowController windowShowController)
+        public MainMenuAdapter(IWindowShowController windowShowController, QuizJsonParser quizJsonParser)
         {
             _windowShowController = windowShowController;
+            _quizJsonParser = quizJsonParser;
         }
 
         public void StartQuiz()
         {
-            _windowShowController.Show<QuizWindow, ReversedShowProcessor, QuizModel>(new QuizModel());
+            _quizJsonParser.Quiz.Reset();
+            _windowShowController.Show<QuizWindow.QuizWindow, ReversedShowProcessor, QuizModel>(_quizJsonParser.Quiz);
         }
 
-        public EmptyWindowModel Model { get; set; }
+        void IWindowAdapter<EmptyWindowModel>.SetUp(EmptyWindowModel model) { }
     }
 }
