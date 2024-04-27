@@ -1,37 +1,41 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Quiz
 {
     public class QuizModel
     {
-        public IReadOnlyList<QuizQuestion> QuizQuestions { get; }
-        public int CurrentQuestion { get; private set; }
-        public int CorrectQuestions { get; private set; }
+        private readonly IReadOnlyList<QuizQuestion> _quizQuestions;
+        private int _currentQuestionIndex;
+
+        public int TotalQuestions => _quizQuestions.Count;
+        public QuizQuestion CurrentQuestion => _quizQuestions[_currentQuestionIndex];
+        public int CorrectQuestions => _quizQuestions.Count(x => x.IsCompleted && x.IsAnsweredCorrect);
         
         public QuizModel(IReadOnlyList<QuizQuestion> quizQuestions)
         {
-            QuizQuestions = quizQuestions;
+            _quizQuestions = quizQuestions;
         }
         
-        public void NextQuestion(bool isCorrect)
+        public void GoToNextQuestion()
         {
-            if (CurrentQuestion >= QuizQuestions.Count - 1)
+            if (_currentQuestionIndex >= _quizQuestions.Count - 1)
             {
+                Debug.LogWarning("No more questions");
                 return;
             }
             
-            if (isCorrect)
-            {
-                CorrectQuestions++;
-            }
-
-            CurrentQuestion++;
+            _currentQuestionIndex++;
         }
         
         public void Reset()
         {
-            CurrentQuestion = 0;
-            CorrectQuestions = 0;
+            _currentQuestionIndex = 0;
+            foreach (QuizQuestion question in _quizQuestions)
+            {
+                question.Reset();
+            }
         }
     }
 }

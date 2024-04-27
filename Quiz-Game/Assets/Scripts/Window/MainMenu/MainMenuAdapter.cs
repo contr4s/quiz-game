@@ -4,7 +4,7 @@ using Window.ShowProcessors;
 
 namespace Window.MainMenu
 {
-    public class MainMenuAdapter : IWindowAdapter<EmptyWindowModel>
+    public class MainMenuAdapter : IWindowAdapter
     {
         private readonly IWindowShowController _windowShowController;
         private readonly QuizJsonParser _quizJsonParser;
@@ -20,7 +20,5 @@ namespace Window.MainMenu
             _quizJsonParser.Quiz.Reset();
             _windowShowController.Show<QuizWindow.QuizWindow, ReversedShowProcessor, QuizModel>(_quizJsonParser.Quiz);
         }
-
-        void IWindowAdapter<EmptyWindowModel>.SetUp(EmptyWindowModel model) { }
     }
 }

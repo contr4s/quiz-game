@@ -4,7 +4,7 @@ using Window.Common;
 
 namespace Window.MainMenu
 {
-    public class MainMenuWindow : CanvasWindowView<MainMenuAdapter>
+    public class MainMenuWindowView : CanvasWindowView<MainMenuAdapter>
     {
         [SerializeField] private Button startButton;
 

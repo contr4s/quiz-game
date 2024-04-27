@@ -25,10 +25,26 @@ namespace Quiz
         public IReadOnlyList<QuizAnswerVariant> AnswerVariants => _answerVariants;
         
         public Texture2D BackgroundTexture { get; set; }
+        
+        public bool IsCompleted { get; private set; }
+        public bool IsAnsweredCorrect { get; private set; }
 
-        public bool IsAnswerCorrect(IReadOnlyCollection<string> selectedVariants)
+        public bool CheckAnswer(IReadOnlyCollection<string> selectedVariants)
         {
-            return CachedAnswers.SetEquals(selectedVariants);
+            if (IsCompleted)
+            {
+                Debug.LogWarning($"Question {Question} already completed");
+                return IsAnsweredCorrect;
+            }
+            
+            IsCompleted = true;
+            IsAnsweredCorrect = CachedAnswers.SetEquals(selectedVariants);
+            return IsAnsweredCorrect;
+        }
+        
+        public void Reset()
+        {
+            IsCompleted = false;
         }
     }
 }

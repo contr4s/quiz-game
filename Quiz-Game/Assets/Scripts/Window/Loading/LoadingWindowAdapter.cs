@@ -7,13 +7,11 @@ using Window.ShowProcessors;
 
 namespace Window.Loading
 {
-    public class LoadingWindowAdapter : IWindowAdapter<EmptyWindowModel>
+    public class LoadingWindowAdapter : IWindowAdapter
     {
         private readonly QuizJsonParser _quizJsonParser;
         private readonly IWindowShowController _windowShowController;
-
-        public EmptyWindowModel Model { get; set; }
-
+        
         public LoadingWindowAdapter(QuizJsonParser quizJsonParser, IWindowShowController windowShowController)
         {
             _quizJsonParser = quizJsonParser;
@@ -28,9 +26,7 @@ namespace Window.Loading
         private async UniTaskVoid LoadJson()
         {
             await _quizJsonParser.Parse(CancellationToken.None);
-            _windowShowController.Show<MainMenuWindow, ReversedShowProcessor>();
+            _windowShowController.Show<MainMenuWindowView, ReversedShowProcessor>();
         }
-
-        void IWindowAdapter<EmptyWindowModel>.SetUp(EmptyWindowModel model) { }
     }
 }

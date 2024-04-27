@@ -26,11 +26,11 @@ namespace Quiz
         {
             string json = await File.ReadAllTextAsync(GetFullPath(_jsonPath), ct);
             var questions = JsonConvert.DeserializeObject<QuizQuestion[]>(json);
-            Quiz = new QuizModel(questions);
-            foreach (QuizQuestion quizQuestion in Quiz.QuizQuestions)
+            foreach (QuizQuestion quizQuestion in questions)
             {
                 quizQuestion.BackgroundTexture = await _imageLoader.FromFile(GetFullPath(quizQuestion.BackgroundPath), ct);
             }
+            Quiz = new QuizModel(questions);
         }
 
         private static string GetFullPath(string path) => Path.Combine(Application.dataPath, DataPath, path);
